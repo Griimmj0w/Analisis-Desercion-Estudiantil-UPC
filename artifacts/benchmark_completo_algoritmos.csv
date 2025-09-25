@@ -1,0 +1,4 @@
+Algoritmo,AUC_CV_Mean,AUC_CV_Std,AUC_Test,Precision_CV_Mean,Precision_Test,Recall_CV_Mean,Recall_Test,F1_CV_Mean,F1_Test
+Random Forest,0.916,0.009,0.932,0.828,0.845,0.747,0.785,0.785,0.814
+Logistic Regression,0.913,0.01,0.926,0.772,0.779,0.807,0.831,0.789,0.804
+SVM,0.906,0.007,0.922,0.781,0.801,0.762,0.792,0.771,0.796

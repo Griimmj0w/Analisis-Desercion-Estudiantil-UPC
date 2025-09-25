@@ -1,0 +1,11 @@
+Variable,Correlacion_Absoluta,Correlacion_Original,Tipo
+target_bin,1.0,1.0,Positiva
+Curricular units 2nd sem (grade),0.572,-0.572,Negativa
+Curricular units 2nd sem (approved),0.57,-0.57,Negativa
+Curricular units 1st sem (grade),0.481,-0.481,Negativa
+Curricular units 1st sem (approved),0.479,-0.479,Negativa
+Tuition fees up to date,0.429,-0.429,Negativa
+Age at enrollment,0.254,0.254,Positiva
+Scholarship holder,0.245,-0.245,Negativa
+Debtor,0.229,0.229,Positiva
+Gender,0.204,0.204,Positiva

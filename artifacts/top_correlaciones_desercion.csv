@@ -1,0 +1,16 @@
+Variable,Correlacion_Absoluta,Correlacion_Original,Direccion
+target_bin,1.0,1.0,Positiva
+Curricular units 2nd sem (grade),0.5717922029440705,-0.5717922029440705,Negativa
+Curricular units 2nd sem (approved),0.5695002441277316,-0.5695002441277316,Negativa
+Curricular units 1st sem (grade),0.4806690652967364,-0.4806690652967364,Negativa
+Curricular units 1st sem (approved),0.4791120338175414,-0.4791120338175414,Negativa
+Tuition fees up to date,0.4291492845262435,-0.4291492845262435,Negativa
+Age at enrollment,0.2542154577662233,0.2542154577662233,Positiva
+Scholarship holder,0.24535391647177604,-0.24535391647177604,Negativa
+Debtor,0.22940731153092347,0.22940731153092347,Positiva
+Gender,0.2039826105341366,0.2039826105341366,Positiva
+Application mode,0.19845800311337808,0.19845800311337808,Positiva
+Curricular units 2nd sem (evaluations),0.1549986674282415,-0.1549986674282415,Negativa
+Curricular units 2nd sem (enrolled),0.14151492624773845,-0.14151492624773845,Negativa
+Curricular units 1st sem (enrolled),0.12463453944493154,-0.12463453944493154,Negativa
+Displaced,0.10723239484077371,-0.10723239484077371,Negativa
