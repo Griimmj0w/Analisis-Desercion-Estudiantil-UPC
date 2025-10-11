@@ -24,7 +24,7 @@ print(df.head())
 resumen_cols = pd.DataFrame({
     "tipo": df.dtypes.astype(str),
     "nulos": df.isna().sum(),
-    "%_nulos": (df.isna().mean()*100).round(2)
+    "%_nul                                     os": (df.isna().mean()*100).round(2)
 })
 resumen_cols.head(20)
 
