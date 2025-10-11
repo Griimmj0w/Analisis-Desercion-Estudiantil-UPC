@@ -126,7 +126,7 @@ El proyecto utiliza un dataset de deserción estudiantil con las siguientes cara
 
 ## 👥 Autor
 
-Desarrollado para el curso de Machine Learning - UPC
+Desarrollado para el curso de analisis de datos y sistemas predictivos- UPC
 
 ## 📄 Licencia
 
