@@ -482,42 +482,17 @@ print("\n💾 11. Guardando modelo de Deep Learning...")
 best_model.save("artifacts/modelo_deep_learning.h5")
 print("   ✓ Modelo guardado: artifacts/modelo_deep_learning.h5")
 
-# Guardar también en formato SavedModel (más portable)
-best_model.save("artifacts/modelo_deep_learning_savedmodel")
-print("   ✓ Modelo guardado: artifacts/modelo_deep_learning_savedmodel/")
+# Guardar también en formato Keras nativo
+best_model.save("artifacts/modelo_deep_learning.keras")
+print("   ✓ Modelo guardado: artifacts/modelo_deep_learning.keras")
 
 # ====================================================================
 # 12. ANÁLISIS DE FEATURE IMPORTANCE (APROXIMADO)
 # ====================================================================
 print("\n🔍 12. Análisis de importancia de features (aproximado)...")
 
-# Usar permutation importance para aproximar importancia
-from sklearn.inspection import permutation_importance
-
-print("   Calculando importancia por permutación (puede tardar)...")
-
-# Wrapper para compatibilidad con sklearn
-class KerasClassifierWrapper:
-    def __init__(self, model):
-        self.model = model
-    
-    def predict(self, X):
-        return (self.model.predict(X, verbose=0).flatten() >= 0.5).astype(int)
-
-wrapper = KerasClassifierWrapper(best_model)
-
-# Calcular importancia (solo en una muestra para velocidad)
-sample_size = min(1000, len(X_test_processed))
-sample_indices = np.random.choice(len(X_test_processed), sample_size, replace=False)
-
-perm_importance = permutation_importance(
-    wrapper, 
-    X_test_processed[sample_indices], 
-    y_test[sample_indices],
-    n_repeats=5,
-    random_state=RANDOM_STATE,
-    n_jobs=-1
-)
+# Calcular importancia basada en gradientes (método alternativo)
+print("   Calculando importancia mediante análisis de varianza...")
 
 # Obtener nombres de features
 feature_names = num_cols.copy()
@@ -526,10 +501,28 @@ if len(cat_cols) > 0:
     cat_feature_names = ohe.get_feature_names_out(cat_cols)
     feature_names.extend(cat_feature_names)
 
+# Calcular importancia usando variación de predicciones
+feature_importance_scores = []
+
+for i in range(X_test_processed.shape[1]):
+    # Permutar cada feature y medir cambio en predicciones
+    X_permuted = X_test_processed.copy()
+    np.random.shuffle(X_permuted[:, i])
+    
+    # Predicciones con feature permutada
+    pred_original = best_model.predict(X_test_processed, verbose=0).flatten()
+    pred_permuted = best_model.predict(X_permuted, verbose=0).flatten()
+    
+    # Calcular diferencia (importancia)
+    importance = np.abs(pred_original - pred_permuted).mean()
+    feature_importance_scores.append(importance)
+
+feature_importance_scores = np.array(feature_importance_scores)
+
 # Top 20 features más importantes
-indices_top = np.argsort(perm_importance.importances_mean)[-20:][::-1]
+indices_top = np.argsort(feature_importance_scores)[-20:][::-1]
 top_features = [feature_names[i] for i in indices_top]
-top_importance = perm_importance.importances_mean[indices_top]
+top_importance = feature_importance_scores[indices_top]
 
 print(f"   Top 10 features más importantes:")
 for i, (feat, imp) in enumerate(zip(top_features[:10], top_importance[:10]), 1):
@@ -539,13 +532,13 @@ for i, (feat, imp) in enumerate(zip(top_features[:10], top_importance[:10]), 1):
 plt.figure(figsize=(10, 8))
 plt.barh(range(len(top_features)), top_importance, color='coral', alpha=0.7)
 plt.yticks(range(len(top_features)), top_features)
-plt.xlabel('Importancia (Permutation)')
+plt.xlabel('Importancia (Variación de Predicción)')
 plt.title('Top 20 Features - Deep Learning Model')
 plt.grid(alpha=0.3, axis='x')
 plt.tight_layout()
 plt.savefig("artifacts/deep_learning_feature_importance.png", dpi=300, bbox_inches="tight")
 print("   ✓ Gráfico guardado: artifacts/deep_learning_feature_importance.png")
-plt.show()
+plt.close()
 
 # ====================================================================
 # 13. RESUMEN FINAL
