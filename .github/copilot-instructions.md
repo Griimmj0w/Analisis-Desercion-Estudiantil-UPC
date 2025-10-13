@@ -65,9 +65,10 @@ All outputs go to `artifacts/` with predictable naming:
 - **Data summaries**: `resumen_variables.csv`, `correlaciones_desercion.csv`, `clustering_perfiles.csv`
 
 ### Critical Data Path
-**Hardcoded CSV path**: `r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv'`
-- When modifying scripts, preserve this exact path format
+**Dataset location**: `DATA/data.csv` (relative path from project root)
+- All scripts now use relative path: `'DATA/data.csv'`
 - Data loading always uses `sep=';'` parameter
+- Dataset is included in project for reproducibility
 
 ## ML Model Standards
 

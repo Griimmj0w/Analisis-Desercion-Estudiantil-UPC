@@ -17,7 +17,7 @@ os.makedirs("artifacts", exist_ok=True)
 print("Cargando datos y generando modelo simplificado...")
 
 # Cargar datos
-df = pd.read_csv(r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv', sep=';')
+df = pd.read_csv('DATA/data.csv', sep=';')
 print(f"Datos cargados: {df.shape}")
 
 # Preparar variable objetivo binaria (Dropout=1, otros=0)

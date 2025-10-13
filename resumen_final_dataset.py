@@ -8,7 +8,7 @@ import os
 os.makedirs('artifacts', exist_ok=True)
 
 # Cargar datos
-df = pd.read_csv(r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv', sep=';')
+df = pd.read_csv('DATA/data.csv', sep=';')
 df['target_bin'] = (df['Target'] == 'Dropout').astype(int)
 
 print("="*80)

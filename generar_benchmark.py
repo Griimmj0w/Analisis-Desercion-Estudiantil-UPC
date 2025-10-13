@@ -20,7 +20,7 @@ print("                    BENCHMARK DE ALGORITMOS - ML")
 print("="*80)
 
 # Cargar y preparar datos
-df = pd.read_csv(r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv', sep=';')
+df = pd.read_csv('DATA/data.csv', sep=';')
 df["target_bin"] = (df["Target"] == "Dropout").astype(int)
 
 # Separar variables

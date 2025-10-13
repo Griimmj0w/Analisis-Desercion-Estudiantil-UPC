@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Cargar el dataset
-df = pd.read_csv(r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv', sep=';')
+df = pd.read_csv('DATA/data.csv', sep=';')
 
 print("="*80)
 print("                    RESUMEN COMPLETO DEL DATASET")

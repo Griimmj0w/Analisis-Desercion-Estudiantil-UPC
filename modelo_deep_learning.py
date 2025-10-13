@@ -53,7 +53,7 @@ print("="*80)
 # 1. CARGAR Y PREPARAR DATOS
 # ====================================================================
 print("\n📊 1. Cargando y preparando datos...")
-df = pd.read_csv(r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv', sep=';')
+df = pd.read_csv('DATA/data.csv', sep=';')
 df["target_bin"] = (df["Target"] == "Dropout").astype(int)
 
 print(f"   Datos cargados: {df.shape[0]:,} estudiantes × {df.shape[1]} variables")
