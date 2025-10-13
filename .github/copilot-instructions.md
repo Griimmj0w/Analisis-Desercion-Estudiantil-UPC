@@ -1,7 +1,13 @@
 # AI Coding Instructions - Student Dropout Prediction ML Project
 
 ## Project Overview
-This is a machine learning project analyzing student dropout patterns using 4,424 student records with 37 variables. The main goal is to build predictive models that identify at-risk students for early intervention.
+This is a **comprehensive machine learning project** analyzing student dropout patterns using 4,424 student records with 37 variables. The project implements **three major ML paradigms**:
+
+1. **Supervised Learning** - Classification models (Random Forest, Logistic Regression, SVM)
+2. **Unsupervised Learning** - Clustering and dimensionality reduction (K-Means, DBSCAN, PCA)
+3. **Deep Learning** - Neural networks with TensorFlow/Keras
+
+The main goal is to build predictive models that identify at-risk students for early intervention using multiple analytical approaches.
 
 ## Core Architecture & Data Flow
 
@@ -11,9 +17,11 @@ Raw CSV → df["target_bin"] = (df["Target"] == "Dropout").astype(int) → Train
 ```
 
 **Key files follow this pattern:**
-- `TrabajoParcial.py` - Complete analysis pipeline with 19 numbered sections
+- `TrabajoFinal.py` - Complete supervised learning pipeline with 19 numbered sections
 - `generar_graficos.py` - Simplified version focusing on visualization
 - `resumen_final_dataset.py` - Dataset analysis and summary generation
+- `analisis_clustering.py` - Unsupervised learning (K-Means, DBSCAN, PCA)
+- `modelo_deep_learning.py` - Deep learning with neural networks
 
 ### Standard Preprocessing Pipeline
 Always use this `ColumnTransformer` pattern for consistency:
@@ -41,16 +49,20 @@ def make_pipe(estimator):
 ## File Organization Patterns
 
 ### Script Categories
-- **Analysis scripts**: `TrabajoParcial.py`, `resumen_dataset.py` - Full ML workflows
+- **Supervised learning**: `TrabajoFinal.py`, `generar_benchmark.py` - Classification workflows
+- **Unsupervised learning**: `analisis_clustering.py` - Clustering and PCA
+- **Deep learning**: `modelo_deep_learning.py` - Neural networks with TensorFlow/Keras
 - **Visualization scripts**: `generar_graficos.py`, `generar_slides.py` - Chart generation
+- **Data analysis**: `resumen_dataset.py`, `resumen_final_dataset.py` - EDA
 - **Documentation**: Comprehensive `.md` files for reports and presentation guides
 
 ### Artifacts Directory Structure
 All outputs go to `artifacts/` with predictable naming:
-- Models: `modelo_desercion.pkl`
-- Benchmarks: `benchmark_modelos.csv`, `benchmark_completo_algoritmos.csv`  
-- Visualizations: `curva_precision_recall.png`, `matriz_confusion_umbral_optimo.png`
-- Data summaries: `resumen_variables.csv`, `correlaciones_desercion.csv`
+- **Supervised models**: `modelo_desercion.pkl`
+- **Deep learning models**: `modelo_deep_learning.h5`, `modelo_deep_learning_savedmodel/`
+- **Benchmarks**: `benchmark_modelos.csv`, `benchmark_completo_algoritmos.csv`, `deep_learning_benchmark_comparison.csv`
+- **Visualizations**: `curva_precision_recall.png`, `matriz_confusion_umbral_optimo.png`, `deep_learning_*.png`, `clustering_*.png`
+- **Data summaries**: `resumen_variables.csv`, `correlaciones_desercion.csv`, `clustering_perfiles.csv`
 
 ### Critical Data Path
 **Hardcoded CSV path**: `r'C:\\Users\\SISTEMAS\\Documents\\PYTHON\\DATA\\data.csv'`
@@ -99,7 +111,7 @@ Key variables to highlight in analysis:
 ### Script Execution Order
 1. Run `resumen_dataset.py` first for data understanding
 2. Use `generar_graficos.py` for quick iterations  
-3. Execute `TrabajoParcial.py` for complete analysis
+3. Execute `TrabajoFinal.py` for complete analysis
 4. Generate presentations with `generar_slides.py`
 
 ### Common Debugging Points
